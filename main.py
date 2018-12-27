@@ -1,6 +1,9 @@
 #爬取豆瓣top250电影并制成dataframe
 import requests, bs4
 import pandas as pd
+from urllib.request import quote
+from download import movie_download
+
 start_id = 0
 m_name_ch = []
 m_name_en = []
@@ -56,3 +59,7 @@ df
 
 #将数据导出至excel
 df.to_excel('豆瓣top250电影数据.xlsx', index = True, encoding = 'utf-8')
+
+#打印top250的电影下载链接，或返回无结果提示
+for movie in m_name_ch:
+    movie_download(movie)
